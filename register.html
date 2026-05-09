@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Link Building Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- 1. Root Variables & Reset --- */
+        :root {
+            --primary-blue: #2d5db1;
+            --dark-blue: #1a3a6c;
+            --light-bg: #f4f7fe;
+            --text-gray: #666;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* --- 2. Layout Structure --- */
+        .login-container {
+            display: flex;
+            width: 100%;
+            max-width: 900px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            overflow: hidden;
+            min-height: 650px; /* Fixed: height for registration fields */
+        }
+
+        /* Branding Side */
+        .login-branding {
+            flex: 1;
+            background: linear-gradient(135deg, #7fb3ff 0%, var(--primary-blue) 100%);
+            color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-branding h1 { font-size: 2.5rem; margin-bottom: 15px; }
+        
+        /* Form Side */
+        .login-box {
+            flex: 1.2;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- 3. Component Styles --- */
+        .back-link {
+            text-decoration: none;
+            color: var(--primary-blue);
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .form-header h2 { font-size: 28px; color: var(--dark-blue); }
+        .form-header p { color: var(--text-gray); margin-bottom: 25px; }
+
+        .user-type-selector {
+            display: flex;
+            background: #f0f0f0;
+            padding: 5px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .user-type-selector input[type="radio"] { display: none; }
+
+        .user-type-selector label {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+            color: var(--text-gray);
+        }
+
+        .user-type-selector input[type="radio"]:checked + label {
+            background: white;
+            color: var(--primary-blue);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Input Fields */
+        .input-group { margin-bottom: 18px; }
+        .input-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 14px; }
+        
+        .input-field {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px 15px;
+            background: #fdfdfd;
+        }
+
+        .input-field i { color: #aaa; margin-right: 10px; }
+        .input-field input {
+            border: none;
+            outline: none;
+            width: 100%;
+            background: transparent;
+        }
+
+        /* Benefits List */
+        .benefit-list { list-style: none; margin-top: 30px; }
+        .benefit-list li { margin-bottom: 15px; display: flex; align-items: center; }
+        .benefit-list i { margin-right: 10px; color: #a3ffbc; }
+
+        /* Buttons & Footer */
+        .auth-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .footer-text { text-align: center; margin-top: 20px; font-size: 14px; }
+        .footer-text a { color: var(--primary-blue); text-decoration: none; font-weight: bold; }
+
+        /* --- 4. Responsive Design --- */
+        @media (max-width: 768px) {
+            .login-container { flex-direction: column; }
+            .login-branding { display: none; } /* Hide branding on mobile for space */
+            .login-box { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container register-container">
+        <div class="login-branding">
+            <div class="brand-content">
+                <h1>Join Link</h1>
+                <p>Start your journey to finding or providing top-tier building services today.</p>
+                <ul class="benefit-list">
+                    <li><i class="fas fa-check-circle"></i> Verified Network</li>
+                    <li><i class="fas fa-check-circle"></i> Secure Payments</li>
+                    <li><i class="fas fa-check-circle"></i> 24/7 Support</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="login-box">
+            <div class="form-header">
+                <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+                <h2>Create Account</h2>
+                <p>Join our community of professionals and homeowners.</p>
+            </div>
+
+            <form id="registerForm" action="register.php" method="POST">
+    
+    <div class="user-type-selector">
+        <input type="radio" name="userType" id="customer" value="customer" checked>
+        <label for="customer">Customer</label>
+        
+        <input type="radio" name="userType" id="provider" value="provider">
+        <label for="provider">Service Provider</label>
+    </div>
+
+    <div class="input-group">
+        <label>Full Name</label>
+        <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" name="full_name" placeholder="John Doe" required>
+        </div>
+    </div>
+
+    <div class="input-group">
+        <label>Email Address</label>
+        <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="email" name="email" placeholder="john@example.com" required>
+        </div>
+    </div>
+
+    <div class="input-group">
+        <label>Password</label>
+        <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" name="password" placeholder="••••••••" required>
+        </div>
+    </div>
+<button type="submit" class="auth-btn">Create Account</button>
+    </form>
+<!--<button type="submit" class="auth-btn">Create Account</button>  -->
+            <p class="footer-text">Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+    </div>
+
+</body>
+</html>

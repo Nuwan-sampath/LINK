@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Link Building Services</title>
+    <style>
+
+:root {
+    --primary-blue: #2d5db1;
+    --dark-blue: #1a3a6c;
+    --green: #28a745;
+    --light-bg: #f4f7fe;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--light-bg);
+}
+
+.login-container {
+    display: flex;
+    width: 900px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin: 20px;
+}
+
+/* Left side branding */
+.login-branding {
+    flex: 1;
+    background: linear-gradient(135deg, #7fb3ff 0%, var(--primary-blue) 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.login-logo { width: 120px; margin-bottom: 20px; }
+
+/* Right side form */
+.login-box {
+    flex: 1.2;
+    padding: 50px;
+}
+
+.back-link {
+    text-decoration: none;
+    color: var(--primary-blue);
+    font-size: 14px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.form-header h2 { font-size: 28px; color: var(--dark-blue); margin: 0; }
+.form-header p { color: #777; margin-bottom: 30px; }
+
+.input-group { margin-bottom: 20px; }
+.input-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; }
+
+.input-field {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 15px;
+    background: #fdfdfd;
+}
+
+.input-field i { color: #aaa; margin-right: 10px; }
+.input-field input {
+    border: none;
+    outline: none;
+    width: 100%;
+    background: transparent;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.auth-btn:hover { background: var(--dark-blue); }
+
+.divider {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+}
+.divider::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: #eee;
+    top: 50%; left: 0;
+}
+.divider span {
+    background: white;
+    padding: 0 10px;
+    position: relative;
+    color: #999;
+    font-size: 12px;
+}
+
+.social-login { display: flex; gap: 10px; }
+.social-login button {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .login-container { flex-direction: column; width: 100%; height: auto; }
+    .login-branding { display: none; }
+    .login-box { padding: 30px; }
+}
+
+    </style>
+    <link rel="stylesheet" href="login-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-branding">
+            <div class="brand-content">
+                <img src="Images/logo.png" alt="Link Logo" class="login-logo">
+                <h1>Welcome Back!</h1>
+                <p>Connect with the best building professionals in your area.</p>
+            </div>
+        </div>
+
+        <div class="login-box">
+            <div class="form-header">
+                <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+                <h2>Login</h2>
+                <p>Enter your details to access your account</p>
+            </div>
+
+           <form id="loginForm" action="login_process.php" method="POST">
+    
+    <div class="input-group">
+        <label>Email Address</label>
+        <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="email" name="email" placeholder="name@company.com" required>
+        </div>
+    </div>
+
+    <div class="input-group">
+        <label>Password</label>
+        <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="password" name="password" placeholder="••••••••" required>
+            <i class="fas fa-eye toggle-password"></i>
+        </div>
+    </div>
+
+    <button type="submit" class="auth-btn">Sign In</button>
+</form>
+            <p class="footer-text">Don't have an account? <a href="register.html">Create account</a></p>
+        </div>
+    </div>
+
+    <script src="login-script.js">
+// Check URL for error parameters
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.has('error')) {
+    alert("Invalid email or password. Please try again.");
+}
+
+
+
+document.querySelector('.toggle-password').addEventListener('click', function() {
+    const passwordField = document.querySelector('#password');
+    const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordField.setAttribute('type', type);
+    this.classList.toggle('fa-eye-slash');
+});
+
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    // Simulate login
+    const btn = document.querySelector('.auth-btn');
+    btn.innerText = "Signing in...";
+    setTimeout(() => {
+        alert("Login Successful! Redirecting...");
+        window.location.href = "index.html";
+    }, 1500);
+});
+
+
+
+    </script>
+</body>
+</html>
